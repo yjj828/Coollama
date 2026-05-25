@@ -3,4 +3,6 @@
 xcuserdata/
 DerivedData/
 build/
+dist/
+scripts/release.env
 *.swp

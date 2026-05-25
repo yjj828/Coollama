@@ -1,6 +1,9 @@
 <div align="center">
 
-# Coollama
+<h1>
+  <img src="Coollama/Assets.xcassets/AppIcon.appiconset/icon_128.png" width="44" align="center" alt="Coollama logo" />
+  Coollama
+</h1>
 
 **一个原生 SwiftUI macOS 客户端，专为本地运行的 [Ollama](https://ollama.com) 而生。**
 
