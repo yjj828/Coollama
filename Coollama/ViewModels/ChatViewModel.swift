@@ -19,6 +19,8 @@ final class ChatViewModel: ObservableObject {
     private weak var sessionFocus: ChatSessionFocus?
     private var streamThinkingBuffer = ""
     private var streamContentBuffer = ""
+    private var pendingStreamingPublishTask: Task<Void, Never>?
+    private let streamingPublishInterval: UInt64 = 50_000_000
     /// 每次生成的唯一 token；任务在写回 UI/SwiftData 状态前都校验 token，
     /// 避免历史任务在新一轮生成开始后误改全局状态
     private var generationToken: UUID?
@@ -40,7 +42,7 @@ final class ChatViewModel: ObservableObject {
     /// 切换侧栏会话后由 ChatView 调用（延迟到下一帧，避免 onChange 同帧多次写状态）
     func sessionBecameVisible(_ sessionID: UUID) {
         if sessionID == generatingSessionID {
-            publishStreamingSnapshot()
+            publishStreamingSnapshotIfCurrent(token: generationToken)
         } else if !inputText.isEmpty {
             inputText = ""
         }
@@ -124,6 +126,8 @@ final class ChatViewModel: ObservableObject {
         generationToken = myToken
         isGenerating = true
         generatingSessionID = session.id
+        pendingStreamingPublishTask?.cancel()
+        pendingStreamingPublishTask = nil
         streamThinkingBuffer = ""
         streamContentBuffer = ""
         clearStreamingDisplay()
@@ -164,15 +168,16 @@ final class ChatViewModel: ObservableObject {
                     switch event {
                     case .thinkingDelta(let delta):
                         self.streamThinkingBuffer += delta
-                        self.publishStreamingSnapshotIfVisible(token: myToken)
+                        self.scheduleStreamingSnapshotIfVisible(token: myToken)
                     case .contentDelta(let delta):
                         self.streamContentBuffer += delta
-                        self.publishStreamingSnapshotIfVisible(token: myToken)
+                        self.scheduleStreamingSnapshotIfVisible(token: myToken)
                     case .done:
                         break
                     }
                 }
 
+                self.publishStreamingSnapshotIfCurrent(token: myToken)
                 assistantMessage.thinking = self.streamThinkingBuffer
                 assistantMessage.content = self.streamContentBuffer
                 MessageRenderCache.invalidate(messageID: assistantMessage.id)
@@ -212,6 +217,8 @@ final class ChatViewModel: ObservableObject {
                 self.isGenerating = false
                 self.generatingSessionID = nil
                 self.streamingMessageID = nil
+                self.pendingStreamingPublishTask?.cancel()
+                self.pendingStreamingPublishTask = nil
                 self.streamThinkingBuffer = ""
                 self.streamContentBuffer = ""
                 self.clearStreamingDisplay()
@@ -227,13 +234,30 @@ final class ChatViewModel: ObservableObject {
         return visible == generatingSessionID
     }
 
-    private func publishStreamingSnapshotIfVisible(token: UUID) {
+    private func scheduleStreamingSnapshotIfVisible(token: UUID) {
         guard generationToken == token else { return }
+        guard isVisibleGeneratingSession else { return }
+        guard pendingStreamingPublishTask == nil else { return }
+
+        let interval = streamingPublishInterval
+        pendingStreamingPublishTask = Task { [weak self] in
+            try? await Task.sleep(nanoseconds: interval)
+            await MainActor.run {
+                guard let self else { return }
+                self.pendingStreamingPublishTask = nil
+                self.publishStreamingSnapshotIfCurrent(token: token)
+            }
+        }
+    }
+
+    private func publishStreamingSnapshotIfCurrent(token: UUID?) {
+        guard let token, generationToken == token else { return }
         guard isVisibleGeneratingSession else { return }
         publishStreamingSnapshot()
     }
 
     private func publishStreamingSnapshot() {
+        guard streamingThinking != streamThinkingBuffer || streamingContent != streamContentBuffer else { return }
         streamingThinking = streamThinkingBuffer
         streamingContent = streamContentBuffer
         streamingRevision &+= 1

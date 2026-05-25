@@ -65,7 +65,7 @@ struct SettingsView: View {
                 }
                 .pickerStyle(.segmented)
                 .onChange(of: viewModel.appearance) { _, _ in
-                    viewModel.save(context: modelContext)
+                    scheduleSave()
                 }
             }
 
@@ -77,7 +77,7 @@ struct SettingsView: View {
                 }
                 .pickerStyle(.segmented)
                 .onChange(of: viewModel.language) { _, _ in
-                    viewModel.save(context: modelContext)
+                    scheduleSave()
                 }
             }
 
@@ -92,7 +92,10 @@ struct SettingsView: View {
         .frame(width: 520, height: 380)
         .padding()
         .onAppear {
-            viewModel.load(from: modelContext)
+            Task { @MainActor in
+                await Task.yield()
+                viewModel.load(from: modelContext)
+            }
         }
         .onDisappear {
             viewModel.save(context: modelContext)
@@ -113,6 +116,13 @@ struct SettingsView: View {
         case .failed:
             Label(languageStore.string(.connectionFailed), systemImage: "xmark.circle.fill")
                 .foregroundStyle(.red)
+        }
+    }
+
+    private func scheduleSave() {
+        Task { @MainActor in
+            await Task.yield()
+            viewModel.save(context: modelContext)
         }
     }
 }

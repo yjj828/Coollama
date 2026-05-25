@@ -10,6 +10,7 @@ struct ChatView: View {
     @Query private var settingsList: [AppSettings]
     @StateObject private var viewModel = ChatViewModel()
     @State private var scrollThrottle = ScrollThrottle()
+    @State private var deferredUpdates = DeferredUpdateCoordinator()
     @State private var sideInset: CGFloat = 20
     @State private var messageSnapshots: [MessageRowSnapshot] = []
 
@@ -36,22 +37,23 @@ struct ChatView: View {
         .background {
             GeometryReader { geometry in
                 Color.clear
-                    .onAppear { updateSideInset(geometry.size.width) }
+                    .onAppear { scheduleSideInsetUpdate(geometry.size.width) }
                     .onChange(of: geometry.size.width) { _, width in
-                        updateSideInset(width)
+                        scheduleSideInsetUpdate(width)
                     }
             }
         }
         .background(OllamaTheme.background)
         .onAppear {
-            viewModel.attach(sessionFocus: sessionFocus)
-            sessionFocus.visibleSessionID = session.id
-            viewModel.sessionBecameVisible(session.id)
-            reloadMessageSnapshots()
-            if let settings = settingsList.first {
-                viewModel.configure(baseURL: settings.baseURL)
-            }
-            Task {
+            Task { @MainActor in
+                await Task.yield()
+                viewModel.attach(sessionFocus: sessionFocus)
+                sessionFocus.visibleSessionID = session.id
+                viewModel.sessionBecameVisible(session.id)
+                reloadMessageSnapshots()
+                if let settings = settingsList.first {
+                    viewModel.configure(baseURL: settings.baseURL)
+                }
                 await viewModel.loadModels()
                 applyModelIfEmpty()
             }
@@ -63,22 +65,23 @@ struct ChatView: View {
             }
         }
         .onChange(of: session.id) { _, newID in
-            sessionFocus.visibleSessionID = newID
             Task { @MainActor in
+                await Task.yield()
+                sessionFocus.visibleSessionID = newID
                 viewModel.sessionBecameVisible(newID)
                 reloadMessageSnapshots()
                 applyModelIfEmpty()
             }
         }
         .onChange(of: session.messages.count) { _, _ in
-            reloadMessageSnapshots()
+            scheduleMessageSnapshotReload()
         }
         .onChange(of: session.updatedAt) { _, _ in
-            reloadMessageSnapshots()
+            scheduleMessageSnapshotReload()
         }
         .onChange(of: viewModel.isGenerating) { wasGenerating, isGenerating in
             if wasGenerating && !isGenerating {
-                reloadMessageSnapshots()
+                scheduleMessageSnapshotReload()
             }
         }
     }
@@ -218,10 +221,27 @@ struct ChatView: View {
         }
     }
 
+    private func scheduleSideInsetUpdate(_ width: CGFloat) {
+        Task { @MainActor in
+            await Task.yield()
+            updateSideInset(width)
+        }
+    }
+
+    private func scheduleMessageSnapshotReload() {
+        deferredUpdates.pendingSnapshotTask?.cancel()
+        deferredUpdates.pendingSnapshotTask = Task { @MainActor in
+            await Task.yield()
+            guard !Task.isCancelled else { return }
+            reloadMessageSnapshots()
+            deferredUpdates.pendingSnapshotTask = nil
+        }
+    }
+
     private func reloadMessageSnapshots() {
         let sorted = session.sortedMessages
         let lastAssistantID = sorted.last(where: { $0.isAssistant })?.id
-        messageSnapshots = sorted.map { message in
+        let snapshots = sorted.map { message in
             MessageRowSnapshot(
                 id: message.id,
                 isUser: message.isUser,
@@ -230,6 +250,9 @@ struct ChatView: View {
                 isInterrupted: message.isInterrupted,
                 isLastAssistant: message.id == lastAssistantID
             )
+        }
+        if messageSnapshots != snapshots {
+            messageSnapshots = snapshots
         }
     }
 
@@ -243,7 +266,10 @@ struct ChatView: View {
             guard scrollThrottle.shouldFire(interval: 0.15) else { return }
         }
         guard let lastID = messageSnapshots.last?.id else { return }
-        Task { @MainActor in
+        deferredUpdates.pendingScrollTask?.cancel()
+        deferredUpdates.pendingScrollTask = Task { @MainActor in
+            await Task.yield()
+            guard !Task.isCancelled else { return }
             if animated {
                 withAnimation(.easeOut(duration: 0.18)) {
                     proxy.scrollTo(lastID, anchor: .bottom)
@@ -251,6 +277,7 @@ struct ChatView: View {
             } else {
                 proxy.scrollTo(lastID, anchor: .bottom)
             }
+            deferredUpdates.pendingScrollTask = nil
         }
     }
 
@@ -272,6 +299,11 @@ private final class ScrollThrottle {
         lastFire = now
         return true
     }
+}
+
+private final class DeferredUpdateCoordinator {
+    var pendingScrollTask: Task<Void, Never>?
+    var pendingSnapshotTask: Task<Void, Never>?
 }
 
 // MARK: - Status pulse

@@ -22,7 +22,10 @@ struct ContentView: View {
         }
         .environmentObject(sessionFocus)
         .onChange(of: selectedSession?.id) { _, newID in
-            sessionFocus.visibleSessionID = newID
+            Task { @MainActor in
+                await Task.yield()
+                sessionFocus.visibleSessionID = newID
+            }
         }
         .navigationSplitViewStyle(.balanced)
         .toolbar(removing: .sidebarToggle)
@@ -32,11 +35,14 @@ struct ContentView: View {
         .ollamaBackground(colorScheme: settingsList.first?.appearance.colorScheme)
         .frame(minWidth: 880, minHeight: 580)
         .onAppear {
-            ensureSettings()
-            syncLanguage()
+            Task { @MainActor in
+                await Task.yield()
+                ensureSettings()
+                syncLanguage()
+            }
         }
         .onChange(of: settingsList.first?.languageRaw) { _, _ in
-            syncLanguage()
+            scheduleLanguageSync()
         }
     }
 
@@ -77,6 +83,13 @@ struct ContentView: View {
     private func syncLanguage() {
         if let settings = settingsList.first {
             languageStore.update(settings.language)
+        }
+    }
+
+    private func scheduleLanguageSync() {
+        Task { @MainActor in
+            await Task.yield()
+            syncLanguage()
         }
     }
 }
