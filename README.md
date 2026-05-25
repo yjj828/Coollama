@@ -29,11 +29,20 @@ Coollama is a local-first desktop chat UI for Ollama. It connects directly to an
 - Privacy-first defaults: App Sandbox enabled and local-network HTTP explicitly scoped
 - English by default, with an in-app language switch for Simplified Chinese
 
+## Why Coollama
+
+Coollama focuses on one practical gap in many Ollama desktop workflows: **thinking control**.
+
+Some reasoning models keep thinking enabled in Ollama Desktop-style clients, and when thinking cannot be turned off, everyday short prompts can become noticeably slower. Coollama provides a dedicated **Thinking** switch for all thinking-capable models, so you can decide when reasoning is worth the extra latency and when you simply want a fast answer.
+
+Turn thinking on for complex tasks. Turn it off for quick chats, translations, summaries, and simple coding questions.
+
 ## Features
 
 - Fetch and switch local Ollama models from the toolbar
 - Streaming chat responses with Markdown block rendering
-- Thinking mode: passes Ollama's `think` parameter and shows reasoning in a collapsible section
+- Thinking switch for reasoning models: freely turn thinking on or off at any time
+- Thinking output display: passes Ollama's `think` parameter and shows reasoning in a collapsible section
 - GPT-OSS reasoning effort picker: `low`, `medium`, `high`
 - Multiple persistent chat sessions powered by SwiftData
 - Stop generation while keeping the partial response marked as interrupted
