@@ -1,0 +1,397 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10000000000000000000001 /* CoollamaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000001 /* CoollamaApp.swift */; };
+		A10000000000000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000002 /* ContentView.swift */; };
+		A10000000000000000000003 /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000003 /* SidebarView.swift */; };
+		A10000000000000000000004 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000004 /* ChatView.swift */; };
+		A10000000000000000000005 /* MessageRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000005 /* MessageRowView.swift */; };
+		A10000000000000000000006 /* InputBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000006 /* InputBarView.swift */; };
+		A10000000000000000000007 /* ModelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000007 /* ModelPickerView.swift */; };
+		A10000000000000000000008 /* ThinkToggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000008 /* ThinkToggleView.swift */; };
+		A10000000000000000000009 /* ThinkingSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000009 /* ThinkingSectionView.swift */; };
+		A1000000000000000000000A /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000A /* SettingsView.swift */; };
+		A1000000000000000000000B /* ChatSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000B /* ChatSession.swift */; };
+		A1000000000000000000000C /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000C /* ChatMessage.swift */; };
+		A1000000000000000000000D /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000D /* AppSettings.swift */; };
+		A1000000000000000000000E /* OllamaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000E /* OllamaClient.swift */; };
+		A1000000000000000000000F /* OllamaAPITypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000000F /* OllamaAPITypes.swift */; };
+		A10000000000000000000010 /* ThinkingMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000010 /* ThinkingMode.swift */; };
+		A10000000000000000000011 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000011 /* ChatViewModel.swift */; };
+		A1000000000000000000001B /* ChatSessionFocus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000001C /* ChatSessionFocus.swift */; };
+		A1000000000000000000001D /* MessageRenderCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000001E /* MessageRenderCache.swift */; };
+		A1000000000000000000001F /* MessageContentParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000020 /* MessageContentParser.swift */; };
+		A10000000000000000000021 /* AppLocalizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000021 /* AppLocalizer.swift */; };
+		A10000000000000000000022 /* AppLanguageStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000022 /* AppLanguageStore.swift */; };
+		A10000000000000000000012 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000012 /* SettingsViewModel.swift */; };
+		A10000000000000000000013 /* OllamaTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000013 /* OllamaTheme.swift */; };
+		A10000000000000000000016 /* FormattedMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000017 /* FormattedMessageView.swift */; };
+		A10000000000000000000017 /* SidebarToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000018 /* SidebarToggleButton.swift */; };
+		A10000000000000000000019 /* WindowChromeConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000000000000000000001A /* WindowChromeConfigurator.swift */; };
+		A10000000000000000000014 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000014 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A20000000000000000000001 /* CoollamaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoollamaApp.swift; sourceTree = "<group>"; };
+		A20000000000000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A20000000000000000000003 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		A20000000000000000000004 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		A20000000000000000000005 /* MessageRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRowView.swift; sourceTree = "<group>"; };
+		A20000000000000000000006 /* InputBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputBarView.swift; sourceTree = "<group>"; };
+		A20000000000000000000007 /* ModelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelPickerView.swift; sourceTree = "<group>"; };
+		A20000000000000000000008 /* ThinkToggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkToggleView.swift; sourceTree = "<group>"; };
+		A20000000000000000000009 /* ThinkingSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkingSectionView.swift; sourceTree = "<group>"; };
+		A2000000000000000000000A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A2000000000000000000000B /* ChatSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSession.swift; sourceTree = "<group>"; };
+		A2000000000000000000000C /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		A2000000000000000000000D /* AppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
+		A2000000000000000000000E /* OllamaClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OllamaClient.swift; sourceTree = "<group>"; };
+		A2000000000000000000000F /* OllamaAPITypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OllamaAPITypes.swift; sourceTree = "<group>"; };
+		A20000000000000000000010 /* ThinkingMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThinkingMode.swift; sourceTree = "<group>"; };
+		A2000000000000000000001E /* MessageRenderCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRenderCache.swift; sourceTree = "<group>"; };
+		A20000000000000000000020 /* MessageContentParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageContentParser.swift; sourceTree = "<group>"; };
+		A20000000000000000000021 /* AppLocalizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLocalizer.swift; sourceTree = "<group>"; };
+		A20000000000000000000011 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		A2000000000000000000001C /* ChatSessionFocus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSessionFocus.swift; sourceTree = "<group>"; };
+		A20000000000000000000022 /* AppLanguageStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguageStore.swift; sourceTree = "<group>"; };
+		A20000000000000000000012 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		A20000000000000000000013 /* OllamaTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OllamaTheme.swift; sourceTree = "<group>"; };
+		A20000000000000000000017 /* FormattedMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedMessageView.swift; sourceTree = "<group>"; };
+		A20000000000000000000018 /* SidebarToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarToggleButton.swift; sourceTree = "<group>"; };
+		A2000000000000000000001A /* WindowChromeConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowChromeConfigurator.swift; sourceTree = "<group>"; };
+		A20000000000000000000014 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A20000000000000000000015 /* Coollama.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Coollama.entitlements; sourceTree = "<group>"; };
+		A20000000000000000000016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A30000000000000000000001 /* Coollama.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coollama.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A40000000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A60000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				A60000000000000000000002 /* Coollama */,
+				A60000000000000000000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A60000000000000000000002 /* Coollama */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000001 /* CoollamaApp.swift */,
+				A60000000000000000000004 /* Models */,
+				A60000000000000000000005 /* Services */,
+				A60000000000000000000006 /* ViewModels */,
+				A60000000000000000000007 /* Views */,
+				A60000000000000000000008 /* Theme */,
+				A20000000000000000000014 /* Assets.xcassets */,
+				A20000000000000000000015 /* Coollama.entitlements */,
+				A20000000000000000000016 /* Info.plist */,
+			);
+			path = Coollama;
+			sourceTree = "<group>";
+		};
+		A60000000000000000000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A30000000000000000000001 /* Coollama.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A60000000000000000000004 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A2000000000000000000000B /* ChatSession.swift */,
+				A2000000000000000000000C /* ChatMessage.swift */,
+				A2000000000000000000000D /* AppSettings.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A60000000000000000000005 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A2000000000000000000000E /* OllamaClient.swift */,
+				A2000000000000000000000F /* OllamaAPITypes.swift */,
+				A20000000000000000000010 /* ThinkingMode.swift */,
+				A2000000000000000000001E /* MessageRenderCache.swift */,
+				A20000000000000000000020 /* MessageContentParser.swift */,
+				A20000000000000000000021 /* AppLocalizer.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A60000000000000000000006 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000011 /* ChatViewModel.swift */,
+				A2000000000000000000001C /* ChatSessionFocus.swift */,
+				A20000000000000000000022 /* AppLanguageStore.swift */,
+				A20000000000000000000012 /* SettingsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A60000000000000000000007 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000002 /* ContentView.swift */,
+				A20000000000000000000003 /* SidebarView.swift */,
+				A20000000000000000000004 /* ChatView.swift */,
+				A20000000000000000000005 /* MessageRowView.swift */,
+				A20000000000000000000006 /* InputBarView.swift */,
+				A20000000000000000000007 /* ModelPickerView.swift */,
+				A20000000000000000000008 /* ThinkToggleView.swift */,
+				A20000000000000000000009 /* ThinkingSectionView.swift */,
+				A2000000000000000000000A /* SettingsView.swift */,
+				A20000000000000000000017 /* FormattedMessageView.swift */,
+				A20000000000000000000018 /* SidebarToggleButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A60000000000000000000008 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000013 /* OllamaTheme.swift */,
+				A2000000000000000000001A /* WindowChromeConfigurator.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A70000000000000000000001 /* Coollama */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A90000000000000000000003 /* Build configuration list for PBXNativeTarget "Coollama" */;
+			buildPhases = (
+				A80000000000000000000001 /* Sources */,
+				A40000000000000000000001 /* Frameworks */,
+				A80000000000000000000002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Coollama;
+			packageProductDependencies = (
+			);
+			productName = Coollama;
+			productReference = A30000000000000000000001 /* Coollama.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA0000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = A90000000000000000000001 /* Build configuration list for PBXProject "Coollama" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				"zh-Hans",
+			);
+			mainGroup = A60000000000000000000001;
+			packageReferences = (
+			);
+			productRefGroup = A60000000000000000000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A70000000000000000000001 /* Coollama */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A80000000000000000000002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000000000000000000014 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A80000000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000000000000000000001 /* CoollamaApp.swift in Sources */,
+				A10000000000000000000002 /* ContentView.swift in Sources */,
+				A10000000000000000000003 /* SidebarView.swift in Sources */,
+				A10000000000000000000004 /* ChatView.swift in Sources */,
+				A10000000000000000000005 /* MessageRowView.swift in Sources */,
+				A10000000000000000000006 /* InputBarView.swift in Sources */,
+				A10000000000000000000007 /* ModelPickerView.swift in Sources */,
+				A10000000000000000000008 /* ThinkToggleView.swift in Sources */,
+				A10000000000000000000009 /* ThinkingSectionView.swift in Sources */,
+				A1000000000000000000000A /* SettingsView.swift in Sources */,
+				A1000000000000000000000B /* ChatSession.swift in Sources */,
+				A1000000000000000000000C /* ChatMessage.swift in Sources */,
+				A1000000000000000000000D /* AppSettings.swift in Sources */,
+				A1000000000000000000000E /* OllamaClient.swift in Sources */,
+				A1000000000000000000000F /* OllamaAPITypes.swift in Sources */,
+				A10000000000000000000010 /* ThinkingMode.swift in Sources */,
+				A10000000000000000000011 /* ChatViewModel.swift in Sources */,
+				A1000000000000000000001B /* ChatSessionFocus.swift in Sources */,
+				A1000000000000000000001D /* MessageRenderCache.swift in Sources */,
+				A1000000000000000000001F /* MessageContentParser.swift in Sources */,
+				A10000000000000000000021 /* AppLocalizer.swift in Sources */,
+				A10000000000000000000022 /* AppLanguageStore.swift in Sources */,
+				A10000000000000000000012 /* SettingsViewModel.swift in Sources */,
+				A10000000000000000000013 /* OllamaTheme.swift in Sources */,
+				A10000000000000000000016 /* FormattedMessageView.swift in Sources */,
+				A10000000000000000000017 /* SidebarToggleButton.swift in Sources */,
+				A10000000000000000000019 /* WindowChromeConfigurator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AB0000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AB0000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		AB0000000000000000000003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Coollama/Coollama.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Coollama/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coollama.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AB0000000000000000000004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Coollama/Coollama.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Coollama/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.coollama.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A90000000000000000000001 /* Build configuration list for PBXProject "Coollama" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB0000000000000000000001 /* Debug */,
+				AB0000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A90000000000000000000003 /* Build configuration list for PBXNativeTarget "Coollama" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB0000000000000000000003 /* Debug */,
+				AB0000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = AA0000000000000000000001 /* Project object */;
+}
